@@ -1,0 +1,660 @@
+---
+// src/pages/tools.astro
+import MainGridLayout from '../layouts/MainGridLayout.astro';
+---
+
+<MainGridLayout title="开发者工具中心 - 我的博客">
+  <div class="tools-container">
+    <!-- 顶部标题区域 -->
+    <section class="hero-section">
+      <div class="hero-content">
+        <h1 class="hero-title">开发者工具集合</h1>
+        <p class="hero-subtitle">一系列精心设计的实用工具，提升您的开发效率</p>
+        <div class="hero-decoration">
+          <div class="decoration-circle"></div>
+          <div class="decoration-square"></div>
+          <div class="decoration-triangle"></div>
+        </div>
+      </div>
+    </section>
+
+    <!-- 工具标签区域 -->
+    <section class="tools-section">
+      <div class="glass-card">
+        <div class="tabs-header">
+          <h2>选择Web工具</h2>
+          <p>点击下方标签切换不同Web在线工具</p>
+        </div>
+        
+        <div class="tabs-container">
+          <div class="tabs">
+            <a href="/vbmeta-tool/" class="tab active" data-tab="vbmeta">
+              <span class="tab-icon">🔧</span>
+              <span class="tab-text">VBMeta 工具</span>
+              <span class="tab-indicator"></span>
+            </a>
+            <!-- 其他工具标签示例 - 需要时取消注释并修改 -->
+            <!--
+            <div class="tab" data-tab="android">
+              <span class="tab-icon">🤖</span>
+              <span class="tab-text">Android 工具</span>
+              <span class="tab-indicator"></span>
+            </div>
+            <div class="tab" data-tab="web">
+              <span class="tab-icon">🌐</span>
+              <span class="tab-text">Web 工具</span>
+              <span class="tab-indicator"></span>
+            </div>
+            <div class="tab" data-tab="system">
+              <span class="tab-icon">💻</span>
+              <span class="tab-text">系统工具</span>
+              <span class="tab-indicator"></span>
+            </div>
+            -->
+          </div>
+
+          <div class="tab-content active" id="vbmeta">
+            <div class="tool-card featured">
+              <div class="tool-header">
+                <div class="tool-icon">
+                  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="28" height="28">
+                    <path fill="currentColor" d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm0 18c-4.41 0-8-3.59-8-8s3.59-8 8-8 8 3.59 8 8-3.59 8-8 8zm-1-13h2v6h-2zm0 8h2v2h-2z"/>
+                  </svg>
+                </div>
+                <div class="tool-title">
+                  <h3>VBMeta 工具</h3>
+                </div>
+              </div>
+              
+              <p class="tool-description">
+                VBMeta 是 Android Verified Boot 2.0+ 中使用的元数据结构格式。此工具可以帮助您解析、修改和创建 VBMeta 镜像。
+              </p>
+              
+              <div class="tool-actions">
+                <a href="/vbmeta-tool/" class="btn primary">
+                  <span>打开 VBMeta 工具</span>
+                  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="20" height="20">
+                    <path fill="currentColor" d="M10 6L8.59 7.41 13.17 12l-4.58 4.59L10 18l6-6z"/>
+                  </svg>
+                </a>
+                <a href="/posts/vbmtea/" class="btn secondary">
+                  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="18" height="18">
+                    <path fill="currentColor" d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm1 15h-2v-2h2v2zm0-4h-2V7h2v6z"/>
+                  </svg>
+                  <span>查看原理</span>
+                </a>
+              </div>
+            </div>
+          </div>
+
+          <!-- 其他工具内容示例 - 需要时取消注释并修改 -->
+          <!--
+          <div class="tab-content" id="android">
+            <div class="coming-soon">
+              <div class="icon">🤖</div>
+              <h3>Android 工具开发中</h3>
+              <p>我们正在努力开发这个工具，敬请期待！</p>
+            </div>
+          </div>
+
+          <div class="tab-content" id="web">
+            <div class="coming-soon">
+              <div class="icon">🌐</div>
+              <h3>Web 工具即将推出</h3>
+              <p>这个工具正在规划中，很快会与大家见面。</p>
+            </div>
+          </div>
+
+          <div class="tab-content" id="system">
+            <div class="coming-soon">
+              <div class="icon">💻</div>
+              <h3>系统工具筹备中</h3>
+              <p>我们正在为这个工具添加更多功能，请稍后再来。</p>
+            </div>
+          </div>
+          -->
+        </div>
+      </div>
+    </section>
+
+    <!-- 访客信息区域 -->
+    <section class="visitor-info">
+      <div class="info-card">
+        <h2>访客信息</h2>
+        <div class="info-grid">
+          <div class="info-item">
+            <div class="info-icon">🕒</div>
+            <div class="info-content">
+              <h3>当前时间</h3>
+              <p id="current-time">加载中...</p>
+            </div>
+          </div>
+          <div class="info-item">
+            <div class="info-icon">💻</div>
+            <div class="info-content">
+              <h3>设备信息</h3>
+              <p id="device-info">加载中...</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+  </div>
+
+  <style is:global>
+    :root {
+      --primary: #6366f1;
+      --primary-dark: #4f46e5;
+      --secondary: #10b981;
+      --accent: #f59e0b;
+      --dark: #1f2937;
+      --light: #f9fafb;
+      --gray: #9ca3af;
+      --glass-bg: rgba(255, 255, 255, 0.1);
+      --glass-border: rgba(255, 255, 255, 0.2);
+      --shadow: 0 10px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04);
+    }
+
+    .tools-container {
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 0 1rem 3rem;
+    }
+
+    /* 顶部英雄区域 */
+    .hero-section {
+      position: relative;
+      padding: 4rem 0 3rem;
+      text-align: center;
+      overflow: hidden;
+    }
+
+    .hero-content {
+      position: relative;
+      z-index: 2;
+    }
+
+    .hero-title {
+      font-size: 3rem;
+      font-weight: 800;
+      background: linear-gradient(135deg, var(--primary), var(--accent));
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+      margin-bottom: 1rem;
+    }
+
+    .hero-subtitle {
+      font-size: 1.2rem;
+      color: var(--dark);
+      max-width: 600px;
+      margin: 0 auto 2rem;
+    }
+
+    .hero-decoration {
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      pointer-events: none;
+      z-index: 1;
+    }
+
+    .decoration-circle,
+    .decoration-square,
+    .decoration-triangle {
+      position: absolute;
+      opacity: 0.1;
+    }
+
+    .decoration-circle {
+      width: 150px;
+      height: 150px;
+      border-radius: 50%;
+      background: linear-gradient(135deg, var(--primary), var(--accent));
+      top: 20%;
+      left: 10%;
+      animation: float 8s ease-in-out infinite;
+    }
+
+    .decoration-square {
+      width: 100px;
+      height: 100px;
+      background: linear-gradient(135deg, var(--secondary), var(--primary));
+      top: 60%;
+      right: 15%;
+      animation: float 10s ease-in-out infinite;
+      animation-delay: 1s;
+    }
+
+    .decoration-triangle {
+      width: 0;
+      height: 0;
+      border-left: 70px solid transparent;
+      border-right: 70px solid transparent;
+      border-bottom: 120px solid var(--accent);
+      bottom: 10%;
+      left: 20%;
+      opacity: 0.1;
+      animation: float 12s ease-in-out infinite;
+      animation-delay: 2s;
+    }
+
+    @keyframes float {
+      0%, 100% { transform: translateY(0) rotate(0deg); }
+      50% { transform: translateY(-20px) rotate(5deg); }
+    }
+
+    /* 工具区域 */
+    .tools-section {
+      margin: 2rem 0 3rem;
+    }
+
+    .glass-card {
+      background: var(--glass-bg);
+      backdrop-filter: blur(10px);
+      border: 1px solid var(--glass-border);
+      border-radius: 20px;
+      padding: 2rem;
+      box-shadow: var(--shadow);
+    }
+
+    .tabs-header {
+      text-align: center;
+      margin-bottom: 2rem;
+    }
+
+    .tabs-header h2 {
+      font-size: 1.8rem;
+      color: var(--dark);
+      margin-bottom: 0.5rem;
+    }
+
+    .tabs-header p {
+      color: var(--gray);
+    }
+
+    .tabs {
+      display: flex;
+      justify-content: center;
+      margin-bottom: 2rem;
+      flex-wrap: wrap;
+      gap: 0.5rem;
+    }
+
+    .tab {
+      display: flex;
+      align-items: center;
+      padding: 1rem 1.5rem;
+      border-radius: 12px;
+      cursor: pointer;
+      transition: all 0.3s ease;
+      position: relative;
+      overflow: hidden;
+      background: transparent;
+      border: none;
+      color: var(--dark);
+      text-decoration: none;
+    }
+
+    .tab:hover {
+      background: rgba(99, 102, 241, 0.1);
+    }
+
+    .tab.active {
+      background: rgba(99, 102, 241, 0.15);
+      color: var(--primary);
+    }
+
+    .tab-icon {
+      font-size: 1.2rem;
+      margin-right: 0.5rem;
+    }
+
+    .tab-text {
+      font-weight: 500;
+    }
+
+    .tab-indicator {
+      position: absolute;
+      bottom: 0;
+      left: 50%;
+      transform: translateX(-50%);
+      width: 0;
+      height: 3px;
+      background: var(--primary);
+      border-radius: 3px 3px 0 0;
+      transition: width 0.3s ease;
+    }
+
+    .tab.active .tab-indicator {
+      width: 70%;
+    }
+
+    .tab-content {
+      display: none;
+      animation: fadeIn 0.5s ease;
+    }
+
+    .tab-content.active {
+      display: block;
+    }
+
+    @keyframes fadeIn {
+      from { opacity: 0; transform: translateY(10px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+
+    /* 工具卡片 */
+    .tool-card {
+      background: white;
+      border-radius: 16px;
+      padding: 2rem;
+      box-shadow: var(--shadow);
+      transition: transform 0.3s ease, box-shadow 0.3s ease;
+    }
+
+    .tool-card.featured {
+      border-left: 4px solid var(--primary);
+    }
+
+    .tool-card:hover {
+      transform: translateY(-5px);
+      box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04);
+    }
+
+    .tool-header {
+      display: flex;
+      align-items: center;
+      margin-bottom: 1.5rem;
+    }
+
+    .tool-icon {
+      width: 50px;
+      height: 50px;
+      background: linear-gradient(135deg, var(--primary), var(--primary-dark));
+      border-radius: 12px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      margin-right: 1rem;
+      color: white;
+    }
+
+    .tool-title {
+      display: flex;
+      align-items: center;
+      gap: 0.8rem;
+      flex-wrap: wrap;
+    }
+
+    .tool-title h3 {
+      margin: 0;
+      font-size: 1.5rem;
+      color: var(--dark);
+    }
+
+    .tool-description {
+      color: var(--dark);
+      line-height: 1.6;
+      margin-bottom: 1.5rem;
+    }
+
+    .tool-actions {
+      display: flex;
+      gap: 1rem;
+    }
+
+    .btn {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 0.5rem;
+      padding: 0.8rem 1.5rem;
+      border-radius: 10px;
+      font-weight: 600;
+      transition: all 0.3s ease;
+      text-decoration: none;
+      border: none;
+      cursor: pointer;
+    }
+
+    .btn.primary {
+      background: linear-gradient(135deg, var(--primary), var(--primary-dark));
+      color: white;
+    }
+
+    .btn.primary:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 6px 15px rgba(99, 102, 241, 0.4);
+    }
+
+    .btn.secondary {
+      background: rgba(99, 102, 241, 0.1);
+      color: var(--primary);
+    }
+
+    .btn.secondary:hover {
+      background: rgba(99, 102, 241, 0.2);
+    }
+
+    /* 访客信息区域 */
+    .visitor-info {
+      margin-top: 3rem;
+    }
+
+    .info-card {
+      background: white;
+      border-radius: 16px;
+      padding: 2rem;
+      box-shadow: var(--shadow);
+    }
+
+    .info-card h2 {
+      text-align: center;
+      color: var(--dark);
+      margin-bottom: 1.5rem;
+      font-size: 1.8rem;
+    }
+
+    .info-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+      gap: 1.5rem;
+    }
+
+    .info-item {
+      display: flex;
+      align-items: center;
+      padding: 1.5rem;
+      background: var(--light);
+      border-radius: 12px;
+      transition: transform 0.3s ease;
+      position: relative;
+    }
+
+    .info-item:hover {
+      transform: translateY(-3px);
+    }
+
+    .info-icon {
+      font-size: 2rem;
+      margin-right: 1rem;
+      width: 50px;
+      height: 50px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      background: rgba(99, 102, 241, 0.1);
+      border-radius: 10px;
+    }
+
+    .info-content h3 {
+      margin: 0 0 0.5rem 0;
+      color: var(--dark);
+      font-size: 1rem;
+    }
+
+    .info-content p {
+      margin: 0;
+      color: var(--primary);
+      font-weight: 600;
+      font-size: 0.9rem;
+    }
+
+    /* 响应式设计 */
+    @media (max-width: 768px) {
+      .hero-title {
+        font-size: 2.2rem;
+      }
+      
+      .tabs {
+        flex-direction: column;
+      }
+      
+      .tab {
+        justify-content: center;
+      }
+      
+      .tool-actions {
+        flex-direction: column;
+      }
+      
+      .info-grid {
+        grid-template-columns: 1fr;
+      }
+      
+      .info-item {
+        flex-direction: column;
+        text-align: center;
+      }
+      
+      .info-icon {
+        margin-right: 0;
+        margin-bottom: 1rem;
+      }
+    }
+  </style>
+
+  <script is:inline>
+    document.addEventListener('DOMContentLoaded', function() {
+      // 标签切换功能
+      const tabs = document.querySelectorAll('.tab');
+      const tabContents = document.querySelectorAll('.tab-content');
+      
+      tabs.forEach(tab => {
+        tab.addEventListener('click', () => {
+          // 如果tab是链接，不执行切换逻辑
+          if (tab.getAttribute('href')) return;
+          
+          const tabId = tab.getAttribute('data-tab');
+          
+          // 移除所有active类
+          tabs.forEach(t => t.classList.remove('active'));
+          tabContents.forEach(tc => tc.classList.remove('active'));
+          
+          // 添加active类到当前tab和content
+          tab.classList.add('active');
+          document.getElementById(tabId).classList.add('active');
+        });
+      });
+      
+      // 添加鼠标悬停效果
+      const toolCards = document.querySelectorAll('.tool-card');
+      toolCards.forEach(card => {
+        card.addEventListener('mouseenter', () => {
+          card.style.transform = 'translateY(-5px)';
+        });
+        
+        card.addEventListener('mouseleave', () => {
+          card.style.transform = 'translateY(0)';
+        });
+      });
+      
+      // 添加按钮悬停效果
+      const buttons = document.querySelectorAll('.btn');
+      buttons.forEach(btn => {
+        btn.addEventListener('mouseenter', () => {
+          btn.style.transform = 'translateY(-2px)';
+        });
+        
+        btn.addEventListener('mouseleave', () => {
+          btn.style.transform = 'translateY(0)';
+        });
+      });
+      
+      // 更新当前时间
+      function updateTime() {
+        const now = new Date();
+        const timeString = now.toLocaleTimeString('zh-CN', { 
+          hour: '2-digit', 
+          minute: '2-digit', 
+          second: '2-digit' 
+        });
+        const dateString = now.toLocaleDateString('zh-CN', { 
+          year: 'numeric', 
+          month: 'long', 
+          day: 'numeric',
+          weekday: 'long'
+        });
+        
+        document.getElementById('current-time').textContent = `${dateString} ${timeString}`;
+      }
+      
+      // 获取设备信息
+      function getDeviceInfo() {
+        const userAgent = navigator.userAgent;
+        let deviceInfo = '';
+        
+        // 检测设备类型
+        if (/Mobile/.test(userAgent)) {
+          deviceInfo = '移动设备';
+        } else if (/Tablet/.test(userAgent)) {
+          deviceInfo = '平板设备';
+        } else {
+          deviceInfo = '桌面设备';
+        }
+        
+        // 检测浏览器
+        let browser = '未知浏览器';
+        if (userAgent.indexOf('Chrome') > -1 && userAgent.indexOf('Edg') === -1) {
+          browser = 'Chrome';
+        } else if (userAgent.indexOf('Firefox') > -1) {
+          browser = 'Firefox';
+        } else if (userAgent.indexOf('Safari') > -1 && userAgent.indexOf('Chrome') === -1) {
+          browser = 'Safari';
+        } else if (userAgent.indexOf('Edg') > -1) {
+          browser = 'Edge';
+        } else if (userAgent.indexOf('Opera') > -1 || userAgent.indexOf('OPR') > -1) {
+          browser = 'Opera';
+        }
+        
+        // 检测操作系统
+        let os = '未知系统';
+        if (userAgent.indexOf('Windows') > -1) {
+          os = 'Windows';
+        } else if (userAgent.indexOf('Mac') > -1) {
+          os = 'Mac OS';
+        } else if (userAgent.indexOf('Linux') > -1) {
+          os = 'Linux';
+        } else if (userAgent.indexOf('Android') > -1) {
+          os = 'Android';
+        } else if (userAgent.indexOf('iOS') > -1 || userAgent.indexOf('iPhone') > -1) {
+          os = 'iOS';
+        }
+        
+        document.getElementById('device-info').textContent = `${deviceInfo} | ${browser} | ${os}`;
+      }
+      
+      // 初始化函数
+      function init() {
+        updateTime();
+        setInterval(updateTime, 1000);
+        getDeviceInfo();
+      }
+      
+      init();
+    });
+  </script>
+</MainGridLayout>
