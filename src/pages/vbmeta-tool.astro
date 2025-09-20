@@ -3,7 +3,7 @@
 import MainGridLayout from '/src/layouts/MainGridLayout.astro';
 
 const title = "VBMeta 工具";
-const description = "批量处理禁用校验的 vbmeta 镜像文件";
+const description = "处理禁用校验的 vbmeta 镜像文件";
 ---
 
 <MainGridLayout {title} {description}>
@@ -46,7 +46,7 @@ const description = "批量处理禁用校验的 vbmeta 镜像文件";
           </div>
           
           <!-- 处理按钮 -->
-          <button id="processBtn" class="process-button" disabled>批量处理文件</button>
+          <button id="processBtn" class="process-button" disabled>处理文件</button>
         </div>
         
         <!-- 右侧列：控制台和下载 -->
@@ -64,7 +64,7 @@ const description = "批量处理禁用校验的 vbmeta 镜像文件";
           <div id="downloadArea" class="download-area" style="display: none;">
             <div class="download-header">
               <h3>下载处理后的文件</h3>
-              <button id="downloadAllBtn" class="download-all-button">一键下载全部</button>
+              <button id="downloadAllBtn" class="download-all-button">下载全部</button>
             </div>
             <div id="downloadList" class="download-list"></div>
           </div>
@@ -314,7 +314,7 @@ const description = "批量处理禁用校验的 vbmeta 镜像文件";
       processedFiles = [];
       
       // 显示控制台区域
-      logToConsole('开始批量处理文件...', 'info');
+      logToConsole('开始处理文件...', 'info');
       
       // 处理每个文件
       for (let i = 0; i < fileQueue.length; i++) {
@@ -442,7 +442,7 @@ const description = "批量处理禁用校验的 vbmeta 镜像文件";
       }
     }
     
-    // 一键下载所有文件
+    // 下载所有文件
     async function downloadAllFiles() {
       if (processedFiles.length === 0) {
         logToConsole('没有可下载的文件', 'warning');

@@ -3,13 +3,13 @@
 import MainGridLayout from '../layouts/MainGridLayout.astro';
 ---
 
-<MainGridLayout title="开发者工具中心 - 我的博客">
+<MainGridLayout title="工具中心 - 我的博客">
   <div class="tools-container">
     <!-- 顶部标题区域 -->
     <section class="hero-section">
       <div class="hero-content">
-        <h1 class="hero-title">开发者工具集合</h1>
-        <p class="hero-subtitle">一系列精心设计的实用工具，提升您的开发效率</p>
+        <h1 class="hero-title">web在线工具</h1>
+        <p class="hero-subtitle"></p>
         <div class="hero-decoration">
           <div class="decoration-circle"></div>
           <div class="decoration-square"></div>
@@ -33,24 +33,6 @@ import MainGridLayout from '../layouts/MainGridLayout.astro';
               <span class="tab-text">VBMeta 工具</span>
               <span class="tab-indicator"></span>
             </a>
-            <!-- 其他工具标签示例 - 需要时取消注释并修改 -->
-            <!--
-            <div class="tab" data-tab="android">
-              <span class="tab-icon">🤖</span>
-              <span class="tab-text">Android 工具</span>
-              <span class="tab-indicator"></span>
-            </div>
-            <div class="tab" data-tab="web">
-              <span class="tab-icon">🌐</span>
-              <span class="tab-text">Web 工具</span>
-              <span class="tab-indicator"></span>
-            </div>
-            <div class="tab" data-tab="system">
-              <span class="tab-icon">💻</span>
-              <span class="tab-text">系统工具</span>
-              <span class="tab-indicator"></span>
-            </div>
-            -->
           </div>
 
           <div class="tab-content active" id="vbmeta">
@@ -86,33 +68,6 @@ import MainGridLayout from '../layouts/MainGridLayout.astro';
               </div>
             </div>
           </div>
-
-          <!-- 其他工具内容示例 - 需要时取消注释并修改 -->
-          <!--
-          <div class="tab-content" id="android">
-            <div class="coming-soon">
-              <div class="icon">🤖</div>
-              <h3>Android 工具开发中</h3>
-              <p>我们正在努力开发这个工具，敬请期待！</p>
-            </div>
-          </div>
-
-          <div class="tab-content" id="web">
-            <div class="coming-soon">
-              <div class="icon">🌐</div>
-              <h3>Web 工具即将推出</h3>
-              <p>这个工具正在规划中，很快会与大家见面。</p>
-            </div>
-          </div>
-
-          <div class="tab-content" id="system">
-            <div class="coming-soon">
-              <div class="icon">💻</div>
-              <h3>系统工具筹备中</h3>
-              <p>我们正在为这个工具添加更多功能，请稍后再来。</p>
-            </div>
-          </div>
-          -->
         </div>
       </div>
     </section>
@@ -534,6 +489,63 @@ import MainGridLayout from '../layouts/MainGridLayout.astro';
         margin-right: 0;
         margin-bottom: 1rem;
       }
+    }
+
+    /* 深色模式基础样式 */
+    :root.dark {
+      --dark: #f9fafb;
+      --light: #1f2937;
+      --gray: #d1d5db;
+      --glass-bg: rgba(30, 30, 30, 0.7);
+      --glass-border: rgba(255, 255, 255, 0.1);
+      --shadow: 0 10px 25px -5px rgba(0, 0, 0, 0.3), 0 10px 10px -5px rgba(0, 0, 0, 0.2);
+    }
+
+    /* 深色模式下的白色背景元素转为深色 */
+    :root.dark .tool-card,
+    :root.dark .info-card {
+      background: #111827;
+    }
+
+    :root.dark .info-item {
+      background: #1f2937;
+    }
+
+    /* 深色模式下的文本颜色调整 */
+    :root.dark .hero-subtitle,
+    :root.dark .tabs-header p,
+    :root.dark .tab,
+    :root.dark .tool-title h3,
+    :root.dark .tool-description,
+    :root.dark .info-card h2,
+    :root.dark .info-content h3 {
+      color: var(--gray);
+    }
+
+    /* 深色模式下的装饰元素调整 */
+    :root.dark .decoration-circle,
+    :root.dark .decoration-square,
+    :root.dark .decoration-triangle {
+      opacity: 0.08;
+    }
+
+    /* 深色模式下的按钮样式优化 */
+    :root.dark .btn.secondary {
+      background: rgba(99, 102, 241, 0.2);
+      color: #a5b4fc;
+    }
+
+    :root.dark .btn.secondary:hover {
+      background: rgba(99, 102, 241, 0.3);
+    }
+
+    /* 深色模式下的标签样式优化 */
+    :root.dark .tab:hover {
+      background: rgba(99, 102, 241, 0.2);
+    }
+
+    :root.dark .tab.active {
+      background: rgba(99, 102, 241, 0.25);
     }
   </style>
 
