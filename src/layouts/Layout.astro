@@ -100,6 +100,10 @@ if (title) {
 		: siteConfig.title;
 }
 
+// 优化Meta Description - 使用站点配置中的描述作为默认值
+const defaultDescription = siteConfig.description || `${siteConfig.title} - 分享技术文章和个人见解`;
+const pageDescription = description || defaultDescription;
+
 let ogImageUrl: string | undefined;
 if (siteConfig.generateOgImages && postSlug) {
 	ogImageUrl = new URL(`/og/${postSlug}.png`, Astro.site).toString();
@@ -130,7 +134,6 @@ const bannerOffset =
 	<head>
 
 		<title>{pageTitle}</title>
-                <meta name="description" content={description || pageTitle} /> <!-- 
 
 		<meta charset="UTF-8" />
 		<meta name="description" content={description || pageTitle}>

@@ -10,14 +10,31 @@ export const getStaticPaths = (async ({ paginate }) => {
 	const allBlogPosts = await getSortedPosts();
 	return paginate(allBlogPosts, { pageSize: PAGE_SIZE });
 }) satisfies GetStaticPaths;
-// https://github.com/withastro/astro/issues/6507#issuecomment-1489916992
 
-const { page } = Astro.props;
+// 从Astro属性中获取page数据，并添加默认值避免undefined
+const { page = {} } = Astro.props;
+
+// 逐层检查确保属性存在，避免访问undefined的属性
+if (!page.data) {
+  throw new Error("Page data is missing");
+}
 
 const len = page.data.length;
+// 安全获取页码参数，处理params可能不存在的情况
+const pageNumber = page.params?.page || "1";
+const isHomePage = pageNumber === "1";
 ---
 
-<MainGridLayout>
+<MainGridLayout
+  title={isHomePage ? "洛水的后花园" : `洛水的后花园 - 第 ${pageNumber} 页`}
+  description={isHomePage 
+    ? "欢迎来到洛水的后花园，分享各种有趣的内容和想法" 
+    : `洛水的后花园 - 第 ${pageNumber} 页的文章列表`}
+>
     <PostPage page={page}></PostPage>
-    <Pagination class="mx-auto onload-animation" page={page} style={`animation-delay: calc(var(--content-delay) + ${(len)*50}ms)`}></Pagination>
+    <Pagination 
+      class="mx-auto onload-animation" 
+      page={page} 
+      style={`animation-delay: calc(var(--content-delay) + ${len * 50}ms)`}
+    ></Pagination>
 </MainGridLayout>
